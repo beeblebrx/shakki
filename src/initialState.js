@@ -39,5 +39,6 @@ export default function initialState() {
         'H5' : <King color='black' />,
         'H6' : <Bishop color='black' />,
         'H7' : <Knight color='black' />,
+        'H8' : <Rook color='black' />
       };
 }

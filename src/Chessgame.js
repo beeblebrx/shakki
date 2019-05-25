@@ -12,7 +12,6 @@ class ChessGame extends React.Component {
   }
 
   render() {
-    console.log(this.state.pieces);
     return (
       <div className='game'>
         <Board pieces={this.state.pieces} />
