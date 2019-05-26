@@ -30,9 +30,9 @@ class Board extends React.PureComponent {
             squares.push(this.renderSquare(i));
         }
         return (
-        <div className='board'>
-            {squares}
-        </div>
+            <div className='board'>
+                {squares}
+            </div>
         )
     }
 }
