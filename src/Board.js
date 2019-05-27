@@ -17,9 +17,10 @@ class Board extends React.PureComponent {
         const y = Math.floor(i / 8);
         const black = (x + y) % 2 === 1;
         const squareId = this.translateToNotation(x, y);
+        const { pieces, onPieceDrop } = this.props;
         return (
-            <Square key={i} color={black ? 'black' : 'white'} id={squareId}>
-                {this.props.pieces[squareId]}
+            <Square key={i} color={black ? 'black' : 'white'} id={squareId} onPieceDrop={onPieceDrop}>
+                {pieces[squareId]}
             </Square>
         )
     }

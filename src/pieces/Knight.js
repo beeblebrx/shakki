@@ -25,7 +25,7 @@ class Knight extends React.PureComponent {
         const visibility = isDragging ? "hidden" : "visible";
 
         return connectDragSource(
-            <div>
+            <span>
                 <svg xmlns="http://www.w3.org/2000/svg" visibility={visibility} viewBox="0 0 45 45" width="100%" height="100%">
                     <g>
                         <path
@@ -86,7 +86,7 @@ class Knight extends React.PureComponent {
                         />
                     </g>
                 </svg>
-            </div>
+            </span>
         )
     }
 }

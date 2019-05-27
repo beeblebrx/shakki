@@ -1,10 +1,28 @@
 import React from 'react'
+import { DragSource } from 'react-dnd';
+import Types from '../Types';
+
+const queenSource = {
+  beginDrag(props) {
+      return {
+          pieceId: props.id
+      }
+  }
+}
+
+function collect(connect, monitor) {
+  return {
+      connectDragSource: connect.dragSource(),
+      isDragging: monitor.isDragging(),
+  }
+}
 
 class Queen extends React.PureComponent {
     render() {
         const stroke = this.props.color === 'white' ? 'black' : 'white';
         const fill = this.props.color;
-        return (
+        return this.props.connectDragSource(
+          <span>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45" width="100%" height="100%">
               <g
                 fill={fill}
@@ -36,8 +54,9 @@ class Queen extends React.PureComponent {
                 />
               </g>
             </svg>
+          </span>
         )
     }
 }
 
-export default Queen;
+export default DragSource(Types.CHESSPIECE, queenSource, collect)(Queen);

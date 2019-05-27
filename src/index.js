@@ -1,6 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import ChessGame from './Chessgame';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import pieces from './reducers';
 
-ReactDOM.render(<ChessGame />, document.getElementById('root'));
+import './index.css';
+import App from './App';
+
+const store = createStore(pieces);
+
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById('root')
+);

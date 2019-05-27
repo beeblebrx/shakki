@@ -4,8 +4,8 @@ import Types from './Types';
 
 const squareTarget = {
     drop(props, monitor) {
-        //console.log(props);
-        //console.log(monitor.getItem());
+        let pieceId = monitor.getItem().pieceId;
+        props.onPieceDrop(pieceId, props.id);
     }
 }
 
