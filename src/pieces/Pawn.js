@@ -1,27 +1,14 @@
 import React from 'react'
 import { DragSource } from 'react-dnd'
 import Types from '../Types';
-
-const pawnSource = {
-    beginDrag(props) {
-        return {
-            pieceId: props.id
-        }
-    }
-}
-
-function collect(connect, monitor) {
-    return {
-        connectDragSource: connect.dragSource(),
-        isDragging: monitor.isDragging(),
-    }
-}
+import { WHITE } from '../constants';
+import { pieceSource, collect } from './DragFunctions.js';
 
 class Pawn extends React.PureComponent {
     render() {
         const { visible, color, connectDragSource } = this.props;
-        const stroke = color === 'white' ? 'black' : 'white';
-        const fill = color;
+        const stroke = color === WHITE ? 'black' : 'white';
+        const fill = color === WHITE ? 'white' : 'black';
         return connectDragSource(
             <span>
                 <svg xmlns="http://www.w3.org/2000/svg" visibility={visible} viewBox="0 0 45 45" width="100%" height="100%">
@@ -38,4 +25,4 @@ class Pawn extends React.PureComponent {
     }
 }
 
-export default DragSource(Types.CHESSPIECE, pawnSource, collect)(Pawn);
+export default DragSource(Types.CHESSPIECE, pieceSource, collect)(Pawn);

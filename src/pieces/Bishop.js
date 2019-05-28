@@ -1,26 +1,13 @@
 import React from 'react'
 import { DragSource } from 'react-dnd';
 import Types from '../Types';
-
-const bishopSource = {
-  beginDrag(props) {
-      return {
-          pieceId: props.id
-      }
-  }
-}
-
-function collect(connect, monitor) {
-  return {
-      connectDragSource: connect.dragSource(),
-      isDragging: monitor.isDragging(),
-  }
-}
+import { WHITE } from '../constants';
+import { pieceSource, collect } from './DragFunctions.js';
 
 class Bishop extends React.PureComponent {
     render() {
-        const stroke = this.props.color === 'white' ? 'black' : 'white';
-        const fill = this.props.color;
+        const stroke = this.props.color === WHITE ? 'black' : 'white';
+        const fill = this.props.color === WHITE ? 'white' : 'black';
         return this.props.connectDragSource(
           <span>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45" width="100%" height="100%">
@@ -47,4 +34,4 @@ class Bishop extends React.PureComponent {
     }
 }
 
-export default DragSource(Types.CHESSPIECE, bishopSource, collect)(Bishop);
+export default DragSource(Types.CHESSPIECE, pieceSource, collect)(Bishop);

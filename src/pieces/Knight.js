@@ -1,27 +1,14 @@
 import React from 'react'
 import { DragSource } from 'react-dnd'
 import Types from '../Types';
-
-const knightSource = {
-    beginDrag(props) {
-        return {
-            pieceId: props.id
-        }
-    }
-}
-
-function collect(connect, monitor) {
-    return {
-        connectDragSource: connect.dragSource(),
-        isDragging: monitor.isDragging(),
-    }
-}
+import { WHITE } from '../constants';
+import { pieceSource, collect } from './DragFunctions.js';
 
 class Knight extends React.PureComponent {
     render() {
-        const stroke = this.props.color === 'white' ? 'black' : 'white';
-        const fill = this.props.color;
-        const { connectDragSource, isDragging } = this.props;
+        const { connectDragSource, isDragging, color } = this.props;
+        const stroke = color === WHITE ? 'black' : 'white';
+        const fill = color === WHITE ? 'white' : 'black';
         const visibility = isDragging ? "hidden" : "visible";
 
         return connectDragSource(
@@ -91,4 +78,4 @@ class Knight extends React.PureComponent {
     }
 }
 
-export default DragSource(Types.CHESSPIECE, knightSource, collect)(Knight)
+export default DragSource(Types.CHESSPIECE, pieceSource, collect)(Knight)
