@@ -1,7 +1,6 @@
 import React from 'react'
 import { DragSource } from 'react-dnd'
-import Types from '../Types';
-import { WHITE } from '../constants';
+import { WHITE, CHESSPIECE } from '../constants';
 import { pieceSource, collect } from './DragFunctions.js';
 
 class Pawn extends React.PureComponent {
@@ -25,4 +24,4 @@ class Pawn extends React.PureComponent {
     }
 }
 
-export default DragSource(Types.CHESSPIECE, pieceSource, collect)(Pawn);
+export default DragSource(CHESSPIECE, pieceSource, collect)(Pawn);

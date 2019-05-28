@@ -1,6 +1,6 @@
 import React from 'react';
 import { DropTarget } from 'react-dnd';
-import Types from './Types';
+import { CHESSPIECE } from './constants';
 
 const squareTarget = {
     drop(props, monitor) {
@@ -33,4 +33,4 @@ class Square extends React.PureComponent {
     }
 }
 
-export default DropTarget(Types.CHESSPIECE, squareTarget, collect)(Square);
+export default DropTarget(CHESSPIECE, squareTarget, collect)(Square);

@@ -5,11 +5,11 @@ import Knight from './pieces/Knight';
 import Bishop from './pieces/Bishop';
 import Queen from './pieces/Queen';
 import King from './pieces/King';
-import { WHITE_TURN, WHITE, BLACK } from './constants';
+import { WHITE, BLACK } from './constants';
 
 const initialState = () => {
   return {
-    turn: WHITE_TURN,
+    turn: WHITE,
     pieces: {
       'B1' : <Pawn color={WHITE} id={1} />,
       'B2' : <Pawn color={WHITE} id={2} />,
