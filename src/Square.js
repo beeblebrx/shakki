@@ -18,11 +18,11 @@ function collect(connect, monitor) {
 
 class Square extends React.PureComponent {
     render() {
-        const { color, children, connectDropTarget } = this.props;
+        const { color, children, connectDropTarget, isOver } = this.props;
         const style = {
             width: '12.5%',
             height: '12.5%',
-            backgroundColor: color
+            backgroundColor: isOver ? 'red' : color
         };
 
         return connectDropTarget(
